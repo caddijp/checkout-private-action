@@ -1,0 +1,48 @@
+name: 'checkout private action'
+description: 'checkout private repo via github apps to use private repo github action code'
+inputs:
+  app_id:
+    description: 'github apps id'
+    required: true
+  secret_key:
+    description: 'github apps secret key'
+    required: true
+  org: 
+    description: 'organization name'
+    required: true
+  repo: 
+    description: 'checkout repo name'
+    required: true
+  ref:  
+    description: 'check out ref, revision, branch, tag.'
+    required: false
+    default: ""
+  dist: 
+    description: 'checkout contents directory'
+    required: false
+    default: "dist"
+runs:
+  using: "composite"
+  steps:
+    - id: init-dir
+      run: mkdir -p ${{ inputs.dist }}
+      shell: bash
+    - id: init-dependency
+      run: sudo apt-get install -y jq curl
+      shell: bash
+    - id: temp_secret
+      run: echo "${{ inputs.secret_key }}" > ${RUNNER_TEMP}/private.pem
+      shell: bash
+    - id: get_token
+      shell: bash
+      run: ${{ github.action_path }}/issue_token.sh ${{ inputs.org }} ${{ inputs.app_id}} ${RUNNER_TEMP}/private.pem
+    - id: delete_secret
+      run: rm ${RUNNER_TEMP}/private.pem
+      shell: bash
+    - id: checkout-private-repo
+      uses: actions/checkout@v3
+      with:
+        repository: ${{ inputs.org}}/${{ inputs.repo }}
+        path: ${{ inputs.dist }}
+        ref: ${{ inputs.ref }}
+        token: ${{ steps.get_token.outputs.access_token }}
