@@ -1,15 +1,15 @@
 # checkout-private-action
-This action checkout your private repository using Github Apps.
-You can use other private repository github actions code.
+This action checkout your private repository using GitHub Apps.
+You can use other private repository GitHub Actions code.
 
 ## Prerequirements
 
 ### Github Apps
 
-To checkout private repository, you need to create [Github Apps](https://docs.github.com/en/developers/apps/getting-started-with-apps/about-apps), and install it in your orgnizaions.
-This Github Apps need contents read permission.
+To checkout private repository, you need to create [Github Apps](https://docs.github.com/en/developers/apps/getting-started-with-apps/about-apps), and install it in your organizations.
+This GitHub Apps need contents read permission.
 
-Then, you need to keep github apps id and private key. We reccommend to keep these in github actions secrets.
+Then, you need to keep GitHub Apps ID and private key. We reccommend to keep these in GitHub Actions secrets.
 
 
 ## Usage
@@ -18,7 +18,7 @@ Then, you need to keep github apps id and private key. We reccommend to keep the
 # .github/worlflows/example.yml
 
 jobs:
-  eample:
+  example:
     # Assumed to run on ubuntu
     runs-on: ubuntu-latest
     ...
