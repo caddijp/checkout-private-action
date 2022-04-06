@@ -24,7 +24,7 @@ jobs:
     ...
     steps:
     # checkout `<organiztion>/<repo>` contents to `./github/actions/common`
-    - uses: caddijp/checkout_private-action@main
+    - uses: caddijp/checkout-private-action@main
       with:
         app_id: ${{secrets.APP_ID}}
         secret_key: ${{secrets.APP_SECRET}}
