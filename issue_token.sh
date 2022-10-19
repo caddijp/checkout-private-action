@@ -34,4 +34,4 @@ access_token=$(
   | jq -r ".token"
 )
 
-echo "::set-output name=access_token::$(echo $access_token)"
+echo "access_token=$(echo $access_token)" >> $GITHUB_OUTPUT
