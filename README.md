@@ -1,4 +1,7 @@
 # checkout-private-action
+
+**NOTE!** Now, actions of the same owner's private repository are able to uses directly.　Please see [this article](https://github.blog/changelog/2022-12-14-github-actions-sharing-actions-and-reusable-workflows-from-private-repositories-is-now-ga/)
+
 This action checkout your private repository using GitHub Apps.
 You can use other private repository GitHub Actions code.
 
